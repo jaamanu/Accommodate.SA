@@ -42,7 +42,7 @@ export default function Header() {
                 (pathMatchRoute("/sign-in") || pathMatchRoute("/profile")) &&
                 "text-black border-b-red-500"
               }`}
-              onClick={() => navigate("/profile")}
+              onClick={() => navigate("/sign-in")}
             >
               Sign in
             </li>
