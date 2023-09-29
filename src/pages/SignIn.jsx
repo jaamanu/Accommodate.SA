@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import OAuth from "../components/OAuth";
@@ -33,7 +33,7 @@ export default function SignIn() {
         navigate("/");
       }
     } catch (error) {
-      toast.error("Bad user credentials");
+      toast.error("Username or password combination wrongs");
     }
   }
   return (

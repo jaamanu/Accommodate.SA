@@ -2,8 +2,12 @@ import { useState } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import OAuth from "../components/OAuth";
-import {getAuth, createUserWithEmailAndPassword, updateProfile,} from "firebase/auth";
-import {db} from "../firebase";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { db } from "../firebase";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -16,41 +20,39 @@ export default function SignUp() {
     password: "",
   });
   const { name, email, password } = formData;
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   function onChange(e) {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.id]: e.target.value,
     }));
   }
-  async function onSubmit(e){
-    e.preventDefault()
-  
+  async function onSubmit(e) {
+    e.preventDefault();
 
-try {
-  const auth = getAuth();
-  const userCredential = await createUserWithEmailAndPassword(
-    auth, 
-    email, 
-    password
-    );
+    try {
+      const auth = getAuth();
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
 
-    updateProfile(auth.currentUser, {
-      displayName: name,
-    })
+      updateProfile(auth.currentUser, {
+        displayName: name,
+      });
 
-  const user = userCredential.user;
-  const formDataCopy = {...formData}
-  delete formDataCopy.password;
-  formDataCopy.timestamp = serverTimestamp
-  ();
+      const user = userCredential.user;
+      const formDataCopy = { ...formData };
+      delete formDataCopy.password;
+      formDataCopy.timestamp = serverTimestamp();
 
-  await setDoc(doc(db, "users", user.uid), formDataCopy);
-  toast.success("Sign up was successful")
-  navigate("/")
-} catch (error) {
- toast.error("Something went wrong with the registration")
-}
+      await setDoc(doc(db, "users", user.uid), formDataCopy);
+      toast.success("Sign up was successful");
+      navigate("/");
+    } catch (error) {
+      toast.error("Something went wrong with the registration");
+    }
   }
 
   return (
@@ -74,7 +76,7 @@ try {
               placeholder="Full name"
               className="mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded transition ease-in-out "
             />
-             <input
+            <input
               type="email"
               id="email"
               value={email}
@@ -134,11 +136,10 @@ try {
             >
               <p className="text-center font-semibold mx-4">OR</p>
             </div>
-            <OAuth/>
+            <OAuth />
           </form>
         </div>
       </div>
     </section>
   );
 }
-
