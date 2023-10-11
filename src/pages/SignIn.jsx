@@ -42,7 +42,7 @@ export default function SignIn() {
       <div className="flex justify-centre items-center flex-wrap px-6 py-12 max-w-6xl mx-auto ">
         <div className="md:w-[67%] lg:w-[50%] mb-12 md:mb-6">
           <img
-            src="https://images.unsplash.com/flagged/photo-1564767609342-620cb19b2357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1373&q=80"
+            src="https://media.istockphoto.com/id/1146488692/photo/portrait-of-delighted-lady-luck-lucky-triumph-raise-fists-close-eyes-content-rejoice-scream.jpg?s=612x612&w=0&k=20&c=VuJmH6yjgL1FPeoZYYM3y1-N-Ss5NLXEr10xkpr6zPM="
             alt="key"
             className="w-full rounded-2xl"
           />

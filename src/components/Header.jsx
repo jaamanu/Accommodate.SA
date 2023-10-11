@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {getAuth, onAuthStateChanged} from "firebase/auth"
 import { useEffect } from "react";
+
 export default function Header() {
   const [pageState, setPageState] = useState("sign in")
   const location = useLocation();
@@ -28,7 +29,7 @@ onAuthStateChanged(auth, (user)=>{
           <img
             src="https://static.rdc.moveaws.com/images/logos/rdc-logo-default.svg"
             alt="logo"
-            className="h-5 cursor-pointer"
+            className="h-5  cursor-pointer"
             onClick={() => navigate("/")}
           />
         </div>
